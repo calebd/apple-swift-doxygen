@@ -11,6 +11,10 @@ env:
 script:
   - mkdir apple
   - git clone https://github.com/apple/swift apple/swift
-  - cd apple/swift
+  - pushd apple/swift
   - git checkout $CMD_SWIFT_TAG
   - utils/update-checkout --clone
+  - popd
+  - doxygen doxygen.config
+  - pushd html
+  - make
