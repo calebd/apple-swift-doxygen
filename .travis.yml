@@ -1,0 +1,16 @@
+language: objective-c
+
+osx_image: xcode8.2
+
+install:
+  - brew install doxygen
+
+env:
+  - CMD_SWIFT_TAG=swift-3.0.2-release
+
+script:
+  - mkdir -p apple/swift
+  - git clone https://github.com/apple/swift apple/swift
+  - cd apple/swift
+  - git checkout $CMD_SWIFT_TAG
+  - utils/update-checkout --clone
